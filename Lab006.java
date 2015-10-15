@@ -78,7 +78,6 @@ public class Lab006
 	
 	public static void updateUniverse(char[] universe)
 	{
-		System.out.println("Got to update");
 		for (int i = 0; i < universe.length - 1; i++)
 		{
 			if (universe[i] == '0')
@@ -109,19 +108,34 @@ public class Lab006
 	
 	public static void saveUniverse(char[] universe) throws IOException
 	{
-		System.out.println("Got to save");
-		String saved = new String(universe);
 		PrintWriter f = new PrintWriter("universe.txt");
+		int numBabies = 0;
+		int numChildren = 0;
+		int numAdults = 0;
+		
 		for (int i = 0; i < universe.length; i++)
 		{
+			if (universe[i] == '0')
+				numBabies++;
+			else if (universe[i] == '1')
+				numChildren++;
+			else if (universe[i] == '2')
+				numAdults++;
+			
 			f.print(universe[i]);
 		}
+		
+		f.print("\nNumber of babies: "); 
+		f.print(numBabies);
+		f.print("\nNumber of children: ");
+		f.print(numChildren);
+		f.print("\nNumber of adults: ");
+		f.print(numAdults);
 		f.close();
 	}
 	
 	public static void displayUniverse(char[] universe)
 	{
-		System.out.println("Got to display");
 		for (int i = 0; i < universe.length; i++)
 		{
 			System.out.print(universe[i]);
